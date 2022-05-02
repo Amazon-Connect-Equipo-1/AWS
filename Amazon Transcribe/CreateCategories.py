@@ -358,7 +358,7 @@ transcribe.create_call_analytics_category(
                         "ParticipantRole": "CUSTOMER",
                         "Targets": [
                             "lost my card",
-                            "lost my credir card",
+                            "lost my credit card",
                             "lost",
                             "my card was stolen",
                             "is missing"
