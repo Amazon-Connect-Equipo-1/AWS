@@ -13,7 +13,7 @@ from __future__ import print_function
 import time
 import boto3
 transcribe = boto3.client('transcribe', 'us-west-2')
-job_name = "my-first-call-analytics-job2"
+job_name = "Prueba3"
 job_uri = "s3://amazon-connect-b7d5ed773859/connect/itesm2022AmazonConnect/CallRecordings/2022/05/01/12342424-5921-4865-8109-006886f41246_20220501T20:24_UTC.wav"
 output_location = "s3://transcribe-job-results-group1/JobResults/"
 data_access_role = "arn:aws:iam::559202700801:role/service-role/AmazonTranscribeServiceRole-TranscribeAccessRole"

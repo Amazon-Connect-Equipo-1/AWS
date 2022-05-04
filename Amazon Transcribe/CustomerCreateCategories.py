@@ -1,5 +1,5 @@
 '''
-CreateCategories.py
+CustomerCreateCategories.py
 Author:
 - Erick Bustos.
 
@@ -7,7 +7,7 @@ Creation date: 20/04/2022
 Last modification date: 01/05/2022
 
 Program that creates Amazon transcript call analytics categories to identify tags in
-call center audio recordings
+call center audio recordings (only for the customer).
 '''
 
 from __future__ import print_function
@@ -17,7 +17,7 @@ transcribe = boto3.client('transcribe', 'us-west-2')
 
 # Create negative to positive category
 transcribe.create_call_analytics_category(
-    CategoryName="negative-to-positive",
+    CategoryName="c-negative-to-positive",
     Rules= [
           {
             "SentimentFilter": {
@@ -52,7 +52,7 @@ transcribe.create_call_analytics_category(
                     "POSITIVE"                    
                 ],
                 "RelativeTimeRange": {
-                    "StartPercentage": 80,
+                    "StartPercentage": 50,
                     "EndPercentage": 100
                   
                 }
@@ -65,7 +65,7 @@ transcribe.create_call_analytics_category(
                     "NEGATIVE"                    
                 ],
                 "RelativeTimeRange": {
-                        "StartPercentage": 80,
+                        "StartPercentage": 50,
                         "EndPercentage": 100
                     
                 },
@@ -76,12 +76,12 @@ transcribe.create_call_analytics_category(
       ]
 )
 
-result = transcribe.get_call_analytics_category(CategoryName="negative-to-positive")    
+result = transcribe.get_call_analytics_category(CategoryName="c-negative-to-positive")    
 print(result)
 
 # Create positive to negative category
 transcribe.create_call_analytics_category(
-    CategoryName="positive-to-negative",
+    CategoryName="c-positive-to-negative",
     Rules= [
           {
             "SentimentFilter": {
@@ -116,7 +116,7 @@ transcribe.create_call_analytics_category(
                     "NEGATIVE"                    
                 ],
                 "RelativeTimeRange": {
-                    "StartPercentage": 80,
+                    "StartPercentage": 50,
                     "EndPercentage": 100
                   
                 }
@@ -129,7 +129,7 @@ transcribe.create_call_analytics_category(
                     "POSITIVE"                    
                 ],
                 "RelativeTimeRange": {
-                        "StartPercentage": 80,
+                        "StartPercentage": 50,
                         "EndPercentage": 100
                     
                 },
@@ -140,13 +140,13 @@ transcribe.create_call_analytics_category(
       ]
 )
 
-result = transcribe.get_call_analytics_category(CategoryName="positive-to-negative")    
+result = transcribe.get_call_analytics_category(CategoryName="c-positive-to-negative")    
 print(result)
 
 
 # Create positive to positive category
 transcribe.create_call_analytics_category(
-    CategoryName="positive-to-positive",
+    CategoryName="c-positive-to-positive",
     Rules= [
           {
             "SentimentFilter": {
@@ -181,7 +181,7 @@ transcribe.create_call_analytics_category(
                     "POSITIVE"                    
                 ],
                 "RelativeTimeRange": {
-                    "StartPercentage": 80,
+                    "StartPercentage": 50,
                     "EndPercentage": 100
                   
                 }
@@ -194,7 +194,7 @@ transcribe.create_call_analytics_category(
                     "NEGATIVE"                    
                 ],
                 "RelativeTimeRange": {
-                        "StartPercentage": 80,
+                        "StartPercentage": 50,
                         "EndPercentage": 100
                     
                 },
@@ -205,12 +205,12 @@ transcribe.create_call_analytics_category(
       ]
 )
 
-result = transcribe.get_call_analytics_category(CategoryName="positive-to-positive")    
+result = transcribe.get_call_analytics_category(CategoryName="c-positive-to-positive")    
 print(result)
 
 # Create negative to negative category
 transcribe.create_call_analytics_category(
-    CategoryName="negative-to-negative",
+    CategoryName="c-negative-to-negative",
     Rules= [
           {
             "SentimentFilter": {
@@ -245,7 +245,7 @@ transcribe.create_call_analytics_category(
                     "NEGATIVE"                    
                 ],
                 "RelativeTimeRange": {
-                    "StartPercentage": 80,
+                    "StartPercentage": 50,
                     "EndPercentage": 100
                   
                 }
@@ -258,7 +258,7 @@ transcribe.create_call_analytics_category(
                     "POSITIVE"                    
                 ],
                 "RelativeTimeRange": {
-                        "StartPercentage": 80,
+                        "StartPercentage": 50,
                         "EndPercentage": 100
                     
                 },
@@ -269,12 +269,12 @@ transcribe.create_call_analytics_category(
       ]
 )
 
-result = transcribe.get_call_analytics_category(CategoryName="negative-to-negative")    
+result = transcribe.get_call_analytics_category(CategoryName="c-negative-to-negative")    
 print(result)
 
 # Overall positive
 transcribe.create_call_analytics_category(
-    CategoryName="entire-call-positive",
+    CategoryName="c-entire-call-positive",
     Rules= [
           {
             "SentimentFilter": {
@@ -288,12 +288,12 @@ transcribe.create_call_analytics_category(
       ]
 )
 
-result = transcribe.get_call_analytics_category(CategoryName="entire-call-positive")    
+result = transcribe.get_call_analytics_category(CategoryName="c-entire-call-positive")    
 print(result)
 
 # Overall negative
 transcribe.create_call_analytics_category(
-    CategoryName="entire-call-negative",
+    CategoryName="c-entire-call-negative",
     Rules= [
           {
             "SentimentFilter": {
@@ -307,12 +307,12 @@ transcribe.create_call_analytics_category(
       ]
 )
 
-result = transcribe.get_call_analytics_category(CategoryName="entire-call-negative")    
+result = transcribe.get_call_analytics_category(CategoryName="c-entire-call-negative")    
 print(result)
 
 # Overall neutral
 transcribe.create_call_analytics_category(
-    CategoryName="entire-call-neutral",
+    CategoryName="c-entire-call-neutral",
     Rules= [
           {
             "SentimentFilter": {
@@ -326,12 +326,12 @@ transcribe.create_call_analytics_category(
       ]
 )
 
-result = transcribe.get_call_analytics_category(CategoryName="entire-call-neutral")    
+result = transcribe.get_call_analytics_category(CategoryName="c-entire-call-neutral")    
 print(result)
 
 # Overall mixed
 transcribe.create_call_analytics_category(
-    CategoryName="entire-call-mixed",
+    CategoryName="c-entire-call-mixed",
     Rules= [
           {
             "SentimentFilter": {
@@ -345,7 +345,7 @@ transcribe.create_call_analytics_category(
       ]
 )
 
-result = transcribe.get_call_analytics_category(CategoryName="entire-call-neutral")    
+result = transcribe.get_call_analytics_category(CategoryName="c-entire-call-neutral")    
 print(result)
 
 # Lost credit card
