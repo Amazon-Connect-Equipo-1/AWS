@@ -1,5 +1,6 @@
 import { useReactMediaRecorder } from "react-media-recorder";
 import {S3} from "aws-sdk";
+import { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } from "./envExports"
  
 const App = () => {
   const {
@@ -25,9 +26,9 @@ const App = () => {
       return new Promise(async (resolve, reject) => {
         const bucket = new S3(
           {
-            accessKeyId: "",
-            secretAccessKey: "",
-            region: ""
+            accessKeyId: AWS_ACCESS_KEY,
+            secretAccessKey: AWS_SECRET_ACCESS_KEY,
+            region: "us-west-2"
           }
         );
         const params = {
