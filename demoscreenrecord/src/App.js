@@ -16,8 +16,8 @@ function App() {
   });
 
   const s3 = new AWS.S3({
-    accessKeyId: "AKIAYEMYUBYA446WZ4WK",
-    secretAccessKey: "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"
+    accessKeyId: "",
+    secretAccessKey: ""
   });
 
   const upload = async () => {
