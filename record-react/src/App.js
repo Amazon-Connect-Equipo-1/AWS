@@ -18,22 +18,22 @@ const App = () => {
       .then(response => response.blob());
   
     // File
-    let file = new File([mediaBlob], 'filename', { type: 'video/webm',    lastModified: Date.now() })
+    let file = new File([mediaBlob], 'filename', { type: 'video/mp4',    lastModified: Date.now() })
     
-    await uploadFilesToS3('webm','videos', file,'myfile')
+    await uploadFilesToS3('mp4','videos', file,'myfile')
     
     async function uploadFilesToS3(extension,path,file,fileName) {
       return new Promise(async (resolve, reject) => {
         const bucket = new S3(
           {
-            accessKeyId: AWS_ACCESS_KEY,
-            secretAccessKey: AWS_SECRET_ACCESS_KEY,
+            accessKeyId: "",
+            secretAccessKey: "",
             region: "us-west-2"
           }
         );
         const params = {
           Bucket: "screen-raw-recordings",
-          Key: path+ "/" + fileName+ extension,
+          Key: path+ "/" + fileName+"."+ extension,
           Body: file
         };
         bucket.upload(params,async(err,data)=>{
