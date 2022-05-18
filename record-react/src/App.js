@@ -1,6 +1,7 @@
 import { useReactMediaRecorder } from "react-media-recorder";
 import {S3} from "aws-sdk";
-import { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } from "./envExports"
+import { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } from "./envExports";
+import { saveAs } from "file-saver";
  
 const App = () => {
   const {
@@ -10,17 +11,27 @@ const App = () => {
     mediaBlobUrl,
   } = useReactMediaRecorder({ screen: true });
 
-  const processVideo = async (mediaBlobUrl) => {
+  const downloadVideo = (mediaBlob) => {
+    if (mediaBlob) {
+      const mp4File = new File([mediaBlob], 'demo1.wav', { type: 'video/wav' })
+      saveAs(mp4File, `Video2.wav`)
+      // saveAs(videoBlob, Video-${Date.now()}.webm)
+    }
+  }
+
+  const processVideo = async () => {
     stopRecording();
 
     // Fetch del URL y conversion a blob
     const mediaBlob = await fetch(mediaBlobUrl)
       .then(response => response.blob());
-  
-    // File
-    let file = new File([mediaBlob], 'filename', { type: 'video/mp4',    lastModified: Date.now() })
     
-    await uploadFilesToS3('mp4','videos', file,'myfile')
+    // File
+    let file = new File([mediaBlob], 'filename', { type: 'video/wav',    lastModified: Date.now() })
+    
+    // downloadVideo(mediaBlob)
+
+    await uploadFilesToS3('wav','videos', file,'myfilepruebamaso')
     
     async function uploadFilesToS3(extension,path,file,fileName) {
       return new Promise(async (resolve, reject) => {
@@ -53,7 +64,7 @@ const App = () => {
       <p>{status}</p>
       <button onClick={startRecording}>Start Recording</button>
       <button onClick={processVideo}>Stop Recording</button>
-      <video src={mediaBlobUrl} controls autoPlay loop />
+      <video src={mediaBlobUrl} controls autoPlay loop/>
     </div>
   );
 };
