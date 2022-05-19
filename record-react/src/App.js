@@ -11,60 +11,48 @@ const App = () => {
     mediaBlobUrl,
   } = useReactMediaRecorder({ screen: true });
 
-  const downloadVideo = (mediaBlob) => {
-    if (mediaBlob) {
-      const mp4File = new File([mediaBlob], 'demo1.wav', { type: 'video/wav' })
-      saveAs(mp4File, `Video2.wav`)
-      // saveAs(videoBlob, Video-${Date.now()}.webm)
-    }
+  function uploadFilesToS3(extension,path,file,fileName) {
+    return new Promise(async (resolve, reject) => {
+      const bucket = new S3(
+        {
+          accessKeyId: "",
+          secretAccessKey: "",
+          region: "us-west-2"
+        }
+      );
+      const params = {
+        Bucket: "screen-raw-recordings",
+        Key: path+ "/" + fileName+"."+ extension,
+        Body: file
+      };
+      bucket.upload(params,async(err,data)=>{
+             if(data){
+                  console.log("Video uploaded")
+               }
+               if(err){
+                  console.log("Video uploaded failed")
+               }
+         })
+    })
   }
 
-  const processVideo = async () => {
-    stopRecording();
-
+  const uploadVideo = async () => {
     // Fetch del URL y conversion a blob
-    const mediaBlob = await fetch(mediaBlobUrl)
-      .then(response => response.blob());
-    
-    // File
-    let file = new File([mediaBlob], 'filename', { type: 'video/wav',    lastModified: Date.now() })
-    
-    // downloadVideo(mediaBlob)
+    const mediaBlob =  await fetch(mediaBlobUrl)
+      .then(response => response.blob())
 
-    await uploadFilesToS3('wav','videos', file,'myfilepruebamaso')
-    
-    async function uploadFilesToS3(extension,path,file,fileName) {
-      return new Promise(async (resolve, reject) => {
-        const bucket = new S3(
-          {
-            accessKeyId: "",
-            secretAccessKey: "",
-            region: "us-west-2"
-          }
-        );
-        const params = {
-          Bucket: "screen-raw-recordings",
-          Key: path+ "/" + fileName+"."+ extension,
-          Body: file
-        };
-        bucket.upload(params,async(err,data)=>{
-               if(data){
-                    console.log("Video uploaded")
-                 }
-                 if(err){
-                    console.log("Video uploaded failed")
-                 }
-           })
-      })
-    }
+    let file = new File([mediaBlob], 'filename', { type: 'video/wav', lastModified: Date.now() });
+
+    await uploadFilesToS3('wav','videos', file ,'prueba11');
   }
  
   return (
     <div>
       <p>{status}</p>
       <button onClick={startRecording}>Start Recording</button>
-      <button onClick={processVideo}>Stop Recording</button>
-      <video src={mediaBlobUrl} controls autoPlay loop/>
+      <button onClick={stopRecording}>Stop Recording</button>
+      <button onClick={uploadVideo}>Upload S3</button>
+      {/* <video src={mediaBlobUrl} controls autoPlay loop/> */}
     </div>
   );
 };
