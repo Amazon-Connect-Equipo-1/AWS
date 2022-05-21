@@ -34,14 +34,37 @@ def get_job_results(event):
 
     # Get Object
     object = s3.get_object(Bucket=s3bucket,Key=s3object)
-    print(object)
+    id = object['Metadata']['jobname']
+
     # Read Body
     object_body = object['Body'].read().decode('utf-8')
     # Transform into dict
     json_content = json.loads(object_body)
 
     
-    return json_content
+    return json_content,id
+  
+def get_graph_customer_sentiment_overall(transcribe_job):
+    
+    customerData = {"NEUTRAL":0,"POSITIVE":0, "NEGATIVE":0}
+    agentData = {"NEUTRAL":0,"POSITIVE":0, "NEGATIVE":0}
+    
+    
+    for turn in transcribe_job["Transcript"]:
+        if turn["ParticipantRole"] == "CUSTOMER":
+            customerData[turn["Sentiment"]] += 1
+        else:
+            agentData[turn["Sentiment"]] += 1
+    
+    tot_customer = sum(customerData.values())
+    tot_agent = sum(agentData.values())
+    
+    def calculate_percentage(v):
+        return Decimal(str(v*100/tot_customer))
+
+    result  = {p: calculate_percentage(v) for p, v in  customerData.items()}
+    return result
+    
 
 def get_call_information(transcribe_job):
     #print(transcribe_job['ConversationCharacteristics'])
@@ -50,8 +73,15 @@ def get_call_information(transcribe_job):
     call_information["NonTalkTimeSeconds"] = Decimal(conversation_characteristics["NonTalkTime"]["TotalTimeMillis"]/1000)
     call_information["AgentInterruptions"] = len(conversation_characteristics["Interruptions"]["InterruptionsByInterrupter"].get("AGENT",[]))
     call_information["CustomerInterruptions"] = len(conversation_characteristics["Interruptions"]["InterruptionsByInterrupter"].get("CUSTOMER",[]))
-    call_information["OverallAgentSentiment"] = Decimal(str(conversation_characteristics["Sentiment"]["OverallSentiment"]["AGENT"]))
-    call_information["OverallCustomerSentiment"] = Decimal(str(conversation_characteristics["Sentiment"]["OverallSentiment"]["CUSTOMER"]))
+    call_information["OverallAgentSentiment"] = Decimal(str(conversation_characteristics["Sentiment"]["OverallSentiment"].get("AGENT",0)))
+    call_information["OverallCustomerSentiment"] = Decimal(str(conversation_characteristics["Sentiment"]["OverallSentiment"].get("CUSTOMER",0)))
+    
+    sentiment_by_quarter = []
+    for entry in conversation_characteristics["Sentiment"]["SentimentByPeriod"]["QUARTER"]["CUSTOMER"]:
+        sentiment_by_quarter.append(Decimal(str(entry["Score"])))
+      
+    call_information["GraphCustomerSentimentByQuarter"] = sentiment_by_quarter
+    call_information["GraphCustomerSentimentOverall"] = get_graph_customer_sentiment_overall(transcribe_job)
     
     return call_information
 
@@ -61,23 +91,22 @@ def lambda_handler(event, context):
     dynamodb = boto3.resource('dynamodb', 'us-west-2')
     
     # Get Table to update
-    table = dynamodb.Table('processed_recordings')
+    table = dynamodb.Table('Recordings-DEV')
     
     # Get Object
-    transcribe_job = get_job_results(event)
+    transcribe_job,id = get_job_results(event)
     
     # Get Tags
     tags = transcribe_job["Categories"]["MatchedCategories"]
-    
     call_information = get_call_information(transcribe_job)
     
     # Make update
     
     response = table.update_item(
         Key={
-            'ProcessedRecordingId': "938398393",
+            'RecordingId': id,
         },
-        UpdateExpression="set tags=:t, recording_data=:rd",
+        UpdateExpression="set tags=:t, recordingData=:rd",
         ExpressionAttributeValues={
             ':t': tags,
             ':rd': call_information,
@@ -85,11 +114,10 @@ def lambda_handler(event, context):
         ReturnValues="UPDATED_NEW"
     )
     return response
-    
+   
 
 
 
-"""
 if __name__ == '__main__':
     lambda_handler({
   "Records": [
@@ -120,7 +148,7 @@ if __name__ == '__main__':
           "arn": "arn:aws:s3:::example-bucket"
         },
         "object": {
-          "key": "JobResults/analytics/JobwithoutMetadata.json",
+          "key": "JobResults/analytics/7088724d-1003-4962-8359-feb8d774cf46.json",
           "size": 1024,
           "eTag": "0123456789abcdef0123456789abcdef",
           "sequencer": "0A1B2C3D4E5F678901"
@@ -129,4 +157,3 @@ if __name__ == '__main__':
     }
   ]
 },2)
-"""
