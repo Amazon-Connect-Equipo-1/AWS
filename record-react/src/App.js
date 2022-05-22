@@ -1,7 +1,5 @@
 import { useReactMediaRecorder } from "react-media-recorder";
-import {S3} from "aws-sdk";
-import { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } from "./envExports";
-import { saveAs } from "file-saver";
+import axios from "axios";
  
 const App = () => {
   const {
@@ -11,39 +9,26 @@ const App = () => {
     mediaBlobUrl,
   } = useReactMediaRecorder({ screen: true });
 
-  function uploadFilesToS3(extension,path,file,fileName) {
-    return new Promise(async (resolve, reject) => {
-      const bucket = new S3(
-        {
-          accessKeyId: "",
-          secretAccessKey: "",
-          region: "us-west-2"
-        }
-      );
-      const params = {
-        Bucket: "screen-raw-recordings",
-        Key: path+ "/" + fileName+"."+ extension,
-        Body: file
-      };
-      bucket.upload(params,async(err,data)=>{
-             if(data){
-                  console.log("Video uploaded")
-               }
-               if(err){
-                  console.log("Video uploaded failed")
-               }
-         })
-    })
-  }
-
   const uploadVideo = async () => {
-    // Fetch del URL y conversion a blob
+    const API_ENDPOINT = "https://gmfy1qbiac.execute-api.us-west-2.amazonaws.com/default/getSignedURL"
     const mediaBlob =  await fetch(mediaBlobUrl)
       .then(response => response.blob())
 
-    let file = new File([mediaBlob], 'filename', { type: 'video/mp4', lastModified: Date.now() });
+    const response = await axios({
+      method: 'GET',
+      url: API_ENDPOINT
+    })
 
-    await uploadFilesToS3('mp4','videos', file ,'prueba11');
+    let file = new File([mediaBlob], response.data.fileName, { type: 'video/mp4', lastModified: Date.now() });
+
+    console.log('Response: ', response.data)
+    console.log('Uploading: ', file)
+    console.log('Uploading to: ', response.data.uploadURL)
+    const result = await fetch(response.data.uploadURL, {
+      method: 'PUT',
+      body: file
+    })
+    console.log('Result: ', result)
   }
  
   return (
