@@ -41,9 +41,9 @@ const App = () => {
     const mediaBlob =  await fetch(mediaBlobUrl)
       .then(response => response.blob())
 
-    let file = new File([mediaBlob], 'filename', { type: 'video/wav', lastModified: Date.now() });
+    let file = new File([mediaBlob], 'filename', { type: 'video/mp4', lastModified: Date.now() });
 
-    await uploadFilesToS3('wav','videos', file ,'prueba11');
+    await uploadFilesToS3('mp4','videos', file ,'prueba11');
   }
  
   return (
