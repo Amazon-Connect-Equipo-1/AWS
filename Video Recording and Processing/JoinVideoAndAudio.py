@@ -16,16 +16,16 @@
 from moviepy.editor import *
 
 # loading video dsa gfg intro video
-clip = VideoFileClip("prueba9.wav")
+clip = VideoFileClip("sample_recording.mp4")
 
 # loading audio file
 audioclip = AudioFileClip("redacted_conversation.wav")
 
-# removing audio from video
-removed_audio_clip = clip.without_audio()
+# Eemoving audio from video. This is not necessary as a copy of the object with the new audio track is created.
+# removed_audio_clip = clip.without_audio()
 
 # adding audio to the video clip
-videoclip = removed_audio_clip.set_audio(audioclip)
+videoclip = clip.set_audio(audioclip)
 videoclip.write_videofile("final_cut.mp4")
 
 # showing video clip
