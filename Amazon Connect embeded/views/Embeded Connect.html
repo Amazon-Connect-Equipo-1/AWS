@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <script src="https://web-documents-embed.s3.us-west-2.amazonaws.com/connect-streams-min.js"></script>
-    <title>On Change States</title>
+    <title>States de after call</title>
   </head>
   <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
   <body onload="init()">
@@ -63,12 +63,13 @@
             });*/
             connect.agent(function(agent) {
               var state = agent.getStatus();
-              window.alert("Este es el after Call" + state.name)
+              window.alert("Ended" + state.name)
             });
            });
            contact.onConnected(function(contact){
-             console.log(`onConnected(${contact.getContactId()})`);
-             window.alert((`onConnected(${contact.getContactId()})`))
+             /*console.log(`onConnected(${contact.getContactId()})`);
+             window.alert((`onConnected(${contact.getContactId()})`))*/
+             window.alert("Entrando a Llamada")
            });
          });
 
@@ -83,7 +84,10 @@
           
           });
           agent.onStateChange(function(agentStateChange) {
-          window.alert("Old State: " + agentStateChange.oldState + " New State: " + agentStateChange.newState)
+            if(agentStateChange.oldState === "AfterCallWork" && agentStateChange.newState === "Available"){
+              window.alert("DEJA DE GRABAR");
+            }
+          //window.alert("Old State: " + agentStateChange.oldState + " New State: " + agentStateChange.newState)
           });
         });
         connect.core.onInitialized(function() { 
