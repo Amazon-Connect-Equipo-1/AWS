@@ -62,8 +62,8 @@
               });
             });*/
             connect.agent(function(agent) {
-              var state = agent.getState();
-              window.alert("Soy el Ended " + state.name)
+              var state = agent.getStatus();
+              window.alert("Este es el after Call" + state.name)
             });
            });
            contact.onConnected(function(contact){
@@ -78,7 +78,7 @@
           //Name should be on a var
           var name = agent.getName();
           agent.onAfterCallWork(function(agent) {
-            var state = agent.getState();
+            var state = agent.getStatus();
             window.alert("Este es el after Call" + state.name)
           
           });
