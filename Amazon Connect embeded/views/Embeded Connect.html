@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <script src="https://web-documents-embed.s3.us-west-2.amazonaws.com/connect-streams-min.js"></script>
-    <title>States de after call</title>
+    <title>New</title>
   </head>
   <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
   <body onload="init()">
@@ -43,6 +43,7 @@
          
          connect.contact(function(contact){
            contact.onIncoming(function(contact){
+             window.alert("Este es el incoming")
            });
            contact.onRefresh(function(contact){
            });
