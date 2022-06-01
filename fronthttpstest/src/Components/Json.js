@@ -5,7 +5,7 @@ const Jsonfile = () =>{
     const [msg, setMsg]  = useState("");
     const [Error, setError]  = useState(false);
     useEffect(() => {
-        fetch('https://localhost:8443/principal')
+        fetch('https://52.37.243.153:8443/principal')
         .then(response => response.json())
         .then(data => {
         if (data !== undefined){
