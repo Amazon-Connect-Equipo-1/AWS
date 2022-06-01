@@ -1,0 +1,60 @@
+{
+  "TimecodeConfig": {
+    "Source": "ZEROBASED"
+  },
+  "OutputGroups": [
+    {
+      "CustomName": "test",
+      "Name": "File Group",
+      "Outputs": [
+        {
+          "ContainerSettings": {
+            "Container": "MP4",
+            "Mp4Settings": {}
+          },
+          "VideoDescription": {
+            "CodecSettings": {
+              "Codec": "H_264",
+              "H264Settings": {
+                "MaxBitrate": 5000000,
+                "RateControlMode": "QVBR",
+                "SceneChangeDetect": "TRANSITION_DETECTION"
+              }
+            }
+          },
+          "AudioDescriptions": [
+            {
+              "CodecSettings": {
+                "Codec": "AAC",
+                "AacSettings": {
+                  "Bitrate": 96000,
+                  "CodingMode": "CODING_MODE_2_0",
+                  "SampleRate": 48000
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "OutputGroupSettings": {
+        "Type": "FILE_GROUP_SETTINGS",
+        "FileGroupSettings": {
+          "Destination": "s3://final-recordings/"
+        }
+      }
+    }
+  ],
+  "Inputs": [
+    {
+      "AudioSelectors": {
+        "Audio Selector 1": {
+          "DefaultSelection": "DEFAULT",
+          "ExternalAudioFileInput": "s3://screen-raw-recordings/audios/0da6dcfc-342a-4cef-967f-d79a9b2f2414.wav"
+        }
+      },
+      "VideoSelector": {},
+      "TimecodeSource": "ZEROBASED",
+      "FileInput": "s3://screen-raw-recordings/videos/0da6dcfc-342a-4cef-967f-d79a9b2f2414.mp4"
+    }
+  ]
+}
