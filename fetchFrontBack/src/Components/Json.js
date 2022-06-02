@@ -6,8 +6,8 @@ const myHeaders = new Headers();
     // myHeadersToken.append("Authorization", `Bearer ${token}`);
 
     const raw = JSON.stringify({
-      email: email,
-      password: pwd,
+      email: "mikeperezlopez15@hotmail.com",
+      password: "123456@aA",
     });
 
     const requestOptions = {
