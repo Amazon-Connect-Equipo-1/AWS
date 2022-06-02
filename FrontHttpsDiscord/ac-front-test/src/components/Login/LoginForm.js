@@ -100,7 +100,7 @@ const LoginForm = (props) => {
     //   redirect: "follow",
     // };
 
-    fetch("http://35.88.250.238:8080/auth/signIn", requestOptions)
+    fetch("https://35.88.250.238:8443/auth/signin", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         window.localStorage.setItem("isLoggedIn", true);
@@ -129,7 +129,7 @@ const LoginForm = (props) => {
 
           //Save manager info in local storage
           fetch(
-            `http://35.88.250.238:8080/manager/managerProfile?email=${email}`,
+            `https://35.88.250.238:8443/manager/managerProfile?email=${email}`,
             requestOptionsGET
           )
             .then((response) => response.text())
@@ -156,7 +156,7 @@ const LoginForm = (props) => {
 
           //Save manager info in local storage
           fetch(
-            `http://35.88.250.238:8080/agent/agentProfile?email=${email}`,
+            `https://35.88.250.238:8443/agent/agentProfile?email=${email}`,
             requestOptionsGET
           )
             .then((response) => response.text())
