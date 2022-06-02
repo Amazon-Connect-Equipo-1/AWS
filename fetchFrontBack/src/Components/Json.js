@@ -36,7 +36,7 @@ const Jsonfile = () =>{
     return(
         <div>
             <h1>Hello Amazon</h1>
-            {fetch()}
+            <button onClick={fetch()} >Send</button>
         </div>
     );
 }
