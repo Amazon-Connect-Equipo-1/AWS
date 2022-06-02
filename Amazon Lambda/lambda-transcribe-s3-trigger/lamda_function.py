@@ -1,5 +1,5 @@
 '''
-    Función Lambda: lamda-transcribe-s3-trigger
+    Función Lambda: lambda-transcribe-s3-trigger
     lamda_function.py
 
     Author:
@@ -8,14 +8,18 @@
     Creation date: 20/04/2022
     Last modification date: 01/06/2022
 
-    Program that acts as a trigger in the S3 that stores the audio recordings from a Amazon Connect.
-    The video is processed with Amazon Transcribe Call Analytics, and the result is stored in a
-    separate S3.
+    Program that acts as a trigger in the S3 that stores the audio recordings from Amazon Connect.
+    It performs the following actions:
+        1) Copy the object to another S3 (where it will be matched and merged with its corresponding screen recording)
+        2) Get already existent call information from Amazon Connect using the Amazon SDK for Python.
+        3) Register the call in both our MySQL (RDS) database, and in DynamoDB
+        4) Send the audio file to Amazon Transcribe to perform a call Analytics Job
+
 '''
 
 import boto3
 import urllib.parse
-#import pymysql
+import pymysql
 import sys
 import os
 
