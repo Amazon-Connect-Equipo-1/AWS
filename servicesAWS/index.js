@@ -15,6 +15,7 @@ var app = express();
 app.use(cors())
 // your express configuration here
 
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 app.get('/principal',(req,res)=>{
     console.log("Entrex30");
     res.send(JSON.stringify({Mensaje: "Sirvio https"}))
