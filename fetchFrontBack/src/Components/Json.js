@@ -24,7 +24,7 @@ const myHeaders = new Headers();
     //   redirect: "follow",
     // };
 
-    fetch("http://35.88.250.238:8080/auth/signin", requestOptions)
+    fetch("https://35.88.250.238:8443/auth/signin", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         window.localStorage.setItem("isLoggedIn", true);
@@ -36,7 +36,7 @@ const Jsonfile = () =>{
     return(
         <div>
             <h1>Hello Amazon</h1>
-            <button onClick={fetch()} >Send</button>
+            <button onClick={fetch()} >Send again</button>
         </div>
     );
 }
