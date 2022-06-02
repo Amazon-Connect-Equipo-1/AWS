@@ -1,0 +1,138 @@
+/* CSS of Tutorials
+Authors:
+        A01777771 Stephen Strange*/
+/*
+form {
+  margin: 30px 0px;
+}
+
+.viewer {
+  background-color: var(--sub-card-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  overflow-y: auto;
+  margin-bottom: 5px;
+}
+
+span {
+  margin-top: 3px;
+}
+*/
+/*Initials: t*/
+.rpv-core__inner-page {
+  background-color: var(--sub-card-background);
+}
+
+.t-sub-container {
+  width: 90%;
+}
+
+/* .t-row-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5rem;
+  grid-template-columns: 4fr 1.5fr;
+  margin-bottom: 2rem;
+} */
+
+.t-container {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.t-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40rem;
+  background-color: var(--sub-card-background);
+  color: var(--text-color);
+  border-radius: 10px;
+  box-shadow: 0 2.4rem 4.8rem rgb(0 0 0 / 15%);
+  height: 65rem;
+}
+
+.t-title {
+  font-size: var(--sub-title);
+  font-weight: bold;
+  margin: 2rem;
+  text-align: center;
+}
+
+.t-text {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.t-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 0 2rem 0;
+  min-height: max-content;
+}
+
+.t-btn {
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  background-color: var(--highlight-color);
+  color: #ffff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.t-select {
+  font-size: var(--option-text);
+  font-weight: bold;
+  border-radius: 6px;
+  border-color: transparent;
+  width: 100%;
+  padding: 1.2rem;
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+}
+.viewer {
+  padding-top: 2rem;
+}
+
+.t-pdf {
+  width: 100%;
+  height: 400px;
+}
+
+/*Media queries for Recordings*/
+/*****************************/
+/* BELOW 90*16 = 1450px (Smaller desktops) */
+/*****************************/
+@media (max-width: 90em) {
+  .rec-main-container {
+    width: 35rem;
+  }
+  .rec-agent-name {
+    font-size: 2rem;
+  }
+  .rec-score {
+    font-size: 1.8rem;
+  }
+}
+
+/*****************************/
+/* BELOW 50*16 = 800px (Smaller desktops) */
+/*****************************/
+@media (max-height: 50em) {
+  .t-main-container {
+    height: 60rem;
+  }
+
+  .t-pdf {
+    width: 100%;
+    height: 300px;
+  }
+}

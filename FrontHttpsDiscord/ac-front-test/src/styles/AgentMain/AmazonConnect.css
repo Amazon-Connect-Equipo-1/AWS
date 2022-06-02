@@ -1,0 +1,42 @@
+/* CSS of AmazonConnect
+Authors:
+        A01378688 Daniel Garcia
+*/
+/*Initials: ac*/
+
+.ac-image {
+  height: 18rem;
+  width: auto;
+  text-align: center;
+}
+
+.ac-title {
+  font-size: var(--sub-title);
+  font-weight: bold;
+  margin: 2rem;
+  text-align: center;
+}
+
+.ac-main-container {
+  width: 45rem;
+  background-color: var(--sub-card-background);
+  color: var(--text-color);
+  border-radius: 10px;
+  box-shadow: 0 2.4rem 4.8rem rgb(0 0 0 / 15%);
+  height: 65rem;
+}
+
+.ac-viewer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*****************************/
+/* BELOW 50*16 = 800px (Smaller desktops) */
+/*****************************/
+@media (max-height: 50em) {
+  .ac-main-container {
+    height: 60rem;
+  }
+}

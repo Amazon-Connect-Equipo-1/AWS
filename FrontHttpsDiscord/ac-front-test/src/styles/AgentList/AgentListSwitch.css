@@ -1,0 +1,42 @@
+/* CSS of AgentListSwitch
+Authors:
+        A01777771 Stephen Strange*/
+.al-switch {
+  position: relative;
+  display: inline-block;
+  width: 6rem;
+  height: 3rem;
+  margin-left: 50rem;
+  margin-top: -5rem;
+}
+.al-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.al-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+.al-slider::before {
+  position: absolute;
+  content: "";
+  height: 2rem;
+  width: 2rem;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  background-color: white;
+  transition: 0.4s;
+}
+input:checked + .al-slider {
+  background-color: rgb(86, 233, 105);
+}
+input:checked + .al-slider:before {
+  transform: translateX(1.5rem);
+}

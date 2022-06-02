@@ -1,0 +1,70 @@
+/* CSS of SingleAgent
+Authors:
+        A01777771 Stephen Strange*/
+/*Initials: sa*/
+
+.sa-main-container {
+  width: 40rem;
+  background-color: var(--sub-card-background);
+  color: var(--text-color);
+  border-radius: 10px;
+  box-shadow: 0 2.4rem 4.8rem rgb(0 0 0 / 15%);
+  min-height: 50rem;
+}
+
+.sa-title {
+  font-size: var(--sub-title);
+  font-weight: bold;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  text-align: center;
+}
+
+.sa-profile-picture {
+  height: 18rem;
+  width: auto;
+  margin-left: 2rem;
+}
+
+.sa-percent-picture {
+  height: 18rem;
+  width: auto;
+}
+
+.sa-images-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  column-gap: 4rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.sa-text {
+  font-size: 2rem;
+  font-weight: lighter;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  text-align: justify;
+}
+
+/*Media queries for SingleAgent*/
+/*****************************/
+/* BELOW 47*16 = 752px (Smaller desktops) */
+/*****************************/
+@media (max-height: 47em) {
+  .sa-main-container {
+    min-height: 45rem;
+  }
+}
+
+/*****************************/
+/* BELOW 42.5*16 = 680px (Very Small desktops) */
+/*****************************/
+@media (max-height: 42.5em) {
+  .sa-main-container {
+    min-height: 40rem;
+  }
+}

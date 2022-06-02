@@ -1,0 +1,32 @@
+/* CSS of Error
+Authors:
+        A01777771 Stephen Strange*/
+/* Initials: err */
+
+.err-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #132535;
+  margin: 1rem 2rem 2rem 100px;
+  border-radius: 10px;
+  color: white;
+  height: 85vh;
+}
+.lerr {
+  margin: 2rem;
+  height: 95vh;
+}
+
+.err-title {
+  font-size: 10rem;
+}
+
+.err-subtitle {
+  font-size: 4rem;
+}
+
+.err-description {
+  font-size: 2rem;
+}

@@ -1,0 +1,321 @@
+/* CSS of Index
+Authors:
+        A01777771 Stephen Strange*/
+
+/* Import Amazon Ember Font*/
+@import url("https://cdn.jsdelivr.net/gh/GoCloudHub/font-amazon-ember/fonts/amazonember/amazonember.css");
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-dark: #233445;
+  --background-light: #fafafa;
+  --background-dark-protanopia: #2a2a40;
+  --background-dark-deuteranopia: #29283f;
+  --background-dark-tritanopia: #233d3c;
+  --background-dark-protanomaly: #262e42;
+  --background-dark-deuteranomaly: #262f42;
+  --background-dark-tritanomaly: #233841;
+
+  --main-card-dark: #132535;
+  --main-card-light: #e9e9e9;
+  --main-card-dark-protanopia: #1a1a31;
+  --main-card-dark-deuteranopia: #191830;
+  --main-card-dark-tritanopia: #132e2d;
+  --main-card-dark-protanomaly: #161f33;
+  --main-card-dark-deuteranomaly: #162032;
+  --main-card-dark-tritanomaly: #132932;
+
+  --sub-card-dark: #415164;
+  --sub-card-light: #fdfdfd;
+  --sub-card-dark-protanopia: #47485f;
+  --sub-card-dark-deuteranopia: #47455e;
+  --sub-card-dark-tritanopia: #415b5a;
+  --sub-card-dark-protanomaly: #434b61;
+  --sub-card-dark-deuteranomaly: #444c61;
+  --sub-card-dark-tritanomaly: #415660;
+
+  --text-color-dark: #fff;
+  --text-color-light: #132535;
+  --text-color-dark-protanopia: #feffff;
+  --text-color-dark-deuteranopia: #fff;
+  --text-color-dark-tritanopia: #fffeff;
+  --text-color-dark-protanomaly: #feffff;
+  --text-color-dark-deuteranomaly: #fff;
+  --text-color-dark-tritanomaly: #fefffe;
+
+  --highlight-color-default: #9facbd;
+  --highlight-color-protanopia: #a4a4b8;
+  --highlight-color-deuteranopia: #a3a2b7;
+  --highlight-color-tritanopia: #9fb5b4;
+  --highlight-color-protanomaly: #a1a7ba;
+  --highlight-color-deuteranomaly: #a1a8ba;
+  --highlight-color-tritanomaly: #9fb0b9;
+
+  --online-color-default: #90da7e;
+  --online-color-protanopia: #b0b094;
+  --online-color-deuteranopia: #aba699;
+  --online-color-tritanopia: #93a5a9;
+  --online-color-protanomaly: #9dc189;
+  --online-color-deuteranomaly: #9ec68b;
+  --online-color-tritanomaly: #92c18e;
+
+  --offline-color-default: #ef6269;
+  --offline-color-protanopia: #b1b067;
+  --offline-color-deuteranopia: #bac466;
+  --offline-color-tritanopia: #e76565;
+  --offline-color-protanomaly: #d59068;
+  --offline-color-deuteranomaly: #d28668;
+  --offline-color-tritanomaly: #ea6367;
+
+  --other-blue-default: #88c1d7;
+  --other-blue-protanopia: #a0a1d1;
+  --other-blue-deuteranopia: #9d99d0;
+  --other-blue-tritanopia: #8acdcc;
+  --other-blue-protanomaly: #92aed4;
+  --other-blue-deuteranomaly: #93b2d3;
+  --other-blue-tritanomaly: #89c6d2;
+
+  --other-dark-blue-default: #009afa;
+  --other-dark-blue-protanopia: #4244e2;
+  --other-dark-blue-deuteranopia: #392edd;
+  --other-dark-blue-tritanopia: #07d0cc;
+  --other-dark-blue-protanomaly: #1c66ee;
+  --other-dark-blue-deuteranomaly: #1e72ec;
+  --other-dark-blue-tritanomaly: #05b3e8;
+
+  --other-yellow-default: #f9f871;
+  --other-yellow-protanopia: #f8f891;
+  --other-yellow-deuteranopia: #f8f899;
+  --other-yellow-tritanopia: #f8abb1;
+  --other-yellow-protanomaly: #f8f881;
+  --other-yellow-deuteranomaly: #f8f884;
+  --other-yellow-tritanomaly: #f8d389;
+
+  --other-pink-default: #d89c99;
+  --other-pink-protanopia: #bebd99;
+  --other-pink-deuteranopia: #c1c699;
+  --other-pink-tritanopia: #d59a9a;
+  --other-pink-protanomaly: #cdaf99;
+  --other-pink-deuteranomaly: #ccab99;
+  --other-pink-tritanomaly: #d69b99;
+
+  --other-orange-default: #e19e20;
+  --other-orange-protanopia: #c3c33e;
+  --other-orange-deuteranopia: #c7cc45;
+  --other-orange-tritanopia: #dd565b;
+  --other-orange-protanomaly: #d4b42f;
+  --other-orange-deuteranomaly: #d3af31;
+  --other-orange-tritanomaly: #de7c37;
+
+  --other-purple-default: #814f68;
+  --other-purple-protanopia: #6b6a61;
+  --other-purple-deuteranopia: #6e7260;
+  --other-purple-tritanopia: #7e5d5c;
+  --other-purple-protanomaly: #775f64;
+  --other-purple-deuteranomaly: #775b64;
+  --other-purple-tritanomaly: #7f5563;
+
+  --other-brown-default: #714437;
+  --other-brown-protanopia: #5d5d3a;
+  --other-brown-deuteranopia: #60633a;
+  --other-brown-tritanopia: #6e3c3d;
+  --other-brown-protanomaly: #685238;
+  --other-brown-deuteranomaly: #684f38;
+  --other-brown-tritanomaly: #6f4039;
+
+  --h1-title-medium: 5rem;
+  --h1-title-small: 3rem;
+  --h1-title-big: 7rem;
+
+  --sub-title-medium: 3rem;
+  --sub-title-small: 2rem;
+  --sub-title-big: 4rem;
+
+  --option-text-medium: 2rem;
+  --option-text-small: 1.5rem;
+  --option-text-big: 2.5rem;
+
+  --sub-option-text-medium: 1.5rem;
+  --sub-option-text-small: 1rem;
+  --sub-option-text-big: 2rem;
+
+  --logo-bbva-dark: url("images/logo_bbva.png");
+  --logo-bbva-light: url("images/logo_bbva_light.png");
+}
+
+body {
+  background-color: var(--background-color);
+  margin: 0;
+  font-family: "Amazon Ember", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body.dark {
+  --background-color: var(--background-dark);
+  --main-card-background: var(--main-card-dark);
+  --sub-card-background: var(--sub-card-dark);
+  --text-color: var(--text-color-dark);
+  --highlight-color: var(--highlight-color-default);
+  --online-color: var(--online-color-default);
+  --offline-color: var(--offline-color-default);
+  --logo-bbva: var(--logo-bbva-dark);
+  --other-blue-color: var(--other-blue-default);
+  --other-dark-blue-color: var(--other-dark-blue-default);
+  --other-yellow-color: var(--other-yellow-default);
+  --other-pink-color: var(--other-pink-default);
+  --other-orange-color: var(--other-orange-default);
+  --other-purple-color: var(--other-purple-default);
+  --other-brown-color: var(--other-brown-default);
+}
+body.light {
+  --background-color: var(--background-light);
+  --main-card-background: var(--main-card-light);
+  --sub-card-background: var(--sub-card-light);
+  --text-color: var(--text-color-light);
+  --highlight-color: var(--highlight-color-default);
+  --online-color: var(--online-color-default);
+  --offline-color: var(--offline-color-default);
+  --logo-bbva: var(--logo-bbva-light);
+  --other-blue-color: var(--other-blue-default);
+  --other-dark-blue-color: var(--other-dark-blue-default);
+  --other-yellow-color: var(--other-yellow-default);
+  --other-pink-color: var(--other-pink-default);
+  --other-orange-color: var(--other-orange-default);
+  --other-purple-color: var(--other-purple-default);
+  --other-brown-color: var(--other-brown-default);
+}
+body.dark_protanopia {
+  --background-color: var(--background-dark-protanopia);
+  --main-card-background: var(--main-card-dark-protanopia);
+  --sub-card-background: var(--sub-card-dark-protanopia);
+  --text-color: var(--text-color-dark-protanopia);
+  --highlight-color: var(--highlight-color-protanopia);
+  --online-color: var(--online-color-protanopia);
+  --offline-color: var(--offline-color-protanopia);
+  --logo-bbva: var(--logo-bbva-dark);
+  --other-blue-color: var(--other-blue-protanopia);
+  --other-dark-blue-color: var(--other-dark-blue-protanopia);
+  --other-yellow-color: var(--other-yellow-protanopia);
+  --other-pink-color: var(--other-pink-protanopia);
+  --other-orange-color: var(--other-orange-protanopia);
+  --other-purple-color: var(--other-purple-protanopia);
+  --other-brown-color: var(--other-brown-protanopia);
+}
+body.dark_deuteranopia {
+  --background-color: var(--background-dark-deuteranopia);
+  --main-card-background: var(--main-card-dark-deuteranopia);
+  --sub-card-background: var(--sub-card-dark-deuteranopia);
+  --text-color: var(--text-color-dark-deuteranopia);
+  --highlight-color: var(--highlight-color-deuteranopia);
+  --online-color: var(--online-color-deuteranopia);
+  --offline-color: var(--offline-color-deuteranopia);
+  --logo-bbva: var(--logo-bbva-dark);
+  --other-blue-color: var(--other-blue-deuteranopia);
+  --other-dark-blue-color: var(--other-dark-blue-deuteranopia);
+  --other-yellow-color: var(--other-yellow-deuteranopia);
+  --other-pink-color: var(--other-pink-deuteranopia);
+  --other-orange-color: var(--other-orange-deuteranopia);
+  --other-purple-color: var(--other-purple-deuteranopia);
+  --other-brown-color: var(--other-brown-deuteranopia);
+}
+body.dark_tritanopia {
+  --background-color: var(--background-dark-tritanopia);
+  --main-card-background: var(--main-card-dark-tritanopia);
+  --sub-card-background: var(--sub-card-dark-tritanopia);
+  --text-color: var(--text-color-dark-tritanopia);
+  --highlight-color: var(--highlight-color-tritanopia);
+  --online-color: var(--online-color-tritanopia);
+  --offline-color: var(--offline-color-tritanopia);
+  --logo-bbva: var(--logo-bbva-dark);
+  --other-blue-color: var(--other-blue-tritanopia);
+  --other-dark-blue-color: var(--other-dark-blue-tritanopia);
+  --other-yellow-color: var(--other-yellow-tritanopia);
+  --other-pink-color: var(--other-pink-tritanopia);
+  --other-orange-color: var(--other-orange-tritanopia);
+  --other-purple-color: var(--other-purple-tritanopia);
+  --other-brown-color: var(--other-brown-tritanopia);
+}
+body.dark_protanomaly {
+  --background-color: var(--background-dark-protanomaly);
+  --main-card-background: var(--main-card-dark-protanomaly);
+  --sub-card-background: var(--sub-card-dark-protanomaly);
+  --text-color: var(--text-color-dark-protanomaly);
+  --highlight-color: var(--highlight-color-protanomaly);
+  --online-color: var(--online-color-protanomaly);
+  --offline-color: var(--offline-color-protanomaly);
+  --logo-bbva: var(--logo-bbva-dark);
+  --other-blue-color: var(--other-blue-protanomaly);
+  --other-dark-blue-color: var(--other-dark-blue-protanomaly);
+  --other-yellow-color: var(--other-yellow-protanomaly);
+  --other-pink-color: var(--other-pink-protanomaly);
+  --other-orange-color: var(--other-orange-protanomaly);
+  --other-purple-color: var(--other-purple-protanomaly);
+  --other-brown-color: var(--other-brown-protanomaly);
+}
+body.dark_deuteranomaly {
+  --background-color: var(--background-dark-deuteranomaly);
+  --main-card-background: var(--main-card-dark-deuteranomaly);
+  --sub-card-background: var(--sub-card-dark-deuteranomaly);
+  --text-color: var(--text-color-dark-deuteranomaly);
+  --highlight-color: var(--highlight-color-deuteranomaly);
+  --online-color: var(--online-color-deuteranomaly);
+  --offline-color: var(--offline-color-deuteranomaly);
+  --logo-bbva: var(--logo-bbva-dark);
+  --other-blue-color: var(--other-blue-deuteranomaly);
+  --other-dark-blue-color: var(--other-dark-blue-deuteranomaly);
+  --other-yellow-color: var(--other-yellow-deuteranomaly);
+  --other-pink-color: var(--other-pink-deuteranomaly);
+  --other-orange-color: var(--other-orange-deuteranomaly);
+  --other-purple-color: var(--other-purple-deuteranomaly);
+  --other-brown-color: var(--other-brown-deuteranomaly);
+}
+body.dark_tritanomaly {
+  --background-color: var(--background-dark-tritanomaly);
+  --main-card-background: var(--main-card-dark-tritanomaly);
+  --sub-card-background: var(--sub-card-dark-tritanomaly);
+  --text-color: var(--text-color-dark-tritanomaly);
+  --highlight-color: var(--highlight-color-tritanomaly);
+  --online-color: var(--online-color-tritanomaly);
+  --offline-color: var(--offline-color-tritanomaly);
+  --logo-bbva: var(--logo-bbva-dark);
+  --other-blue-color: var(--other-blue-tritanomaly);
+  --other-dark-blue-color: var(--other-dark-blue-tritanomaly);
+  --other-yellow-color: var(--other-yellow-tritanomaly);
+  --other-pink-color: var(--other-pink-tritanomaly);
+  --other-orange-color: var(--other-orange-tritanomaly);
+  --other-purple-color: var(--other-purple-tritanomaly);
+  --other-brown-color: var(--other-brown-tritanomaly);
+}
+body.small {
+  --h1-title: var(--h1-title-small);
+  --sub-title: var(--sub-title-small);
+  --option-text: var(--option-text-small);
+  --sub-option-text: var(--sub-option-text-small);
+}
+body.medium {
+  --h1-title: var(--h1-title-medium);
+  --sub-title: var(--sub-title-medium);
+  --option-text: var(--option-text-medium);
+  --sub-option-text: var(--sub-option-text-medium);
+}
+body.big {
+  --h1-title: var(--h1-title-big);
+  --sub-title: var(--sub-title-big);
+  --option-text: var(--option-text-big);
+  --sub-option-text: var(--sub-option-text-big);
+}
+html {
+  /* Format rem */
+  font-size: 62.5%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

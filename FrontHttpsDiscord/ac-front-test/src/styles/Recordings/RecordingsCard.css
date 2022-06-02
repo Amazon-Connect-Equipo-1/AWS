@@ -1,0 +1,160 @@
+/* CSS of RecordingsCard
+Authors:
+        A01777771 Stephen Strange*/
+/* Initials: rec */
+
+.link {
+  text-decoration: none;
+  font-size: inherit;
+}
+
+.rec-main-container {
+  width: 40rem;
+  color: var(--text-color);
+  background-color: var(--sub-card-background);
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 20rem;
+}
+
+.rec-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.rec-video-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  position: relative;
+}
+
+.rec-video {
+  cursor: pointer;
+}
+
+.rec-video::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  width: 3rem;
+  height: 3rem;
+  border-style: solid;
+  border-width: 1.5rem 0 1.5rem 3rem;
+  border-color: transparent transparent transparent white;
+  top: 35%;
+  left: 20%;
+}
+
+.rec-video-img {
+  height: 10rem;
+  border-radius: 10px;
+}
+
+.rec-video-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.rec-agent-name {
+  font-size: var(--option-text);
+  text-align: end;
+}
+
+.rec-agent-name-small {
+  font-size: 1.5rem;
+}
+
+.rec-agent-name-md {
+  font-size: 2rem;
+}
+
+.rec-date {
+  font-size: var(--sub-option-text);
+  text-align: end;
+}
+
+.rec-score {
+  text-align: end;
+  font-size: 2.6rem;
+}
+
+.rec-tag-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-flow: column;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.rec-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  padding: 0 1.5rem;
+  font-size: var(--sub-option-text);
+  color: var(--text-color);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card-declined {
+  background-color: var(--offline-color);
+}
+.lost-card {
+  background-color: var(--other-dark-blue-color);
+}
+.stolen-card {
+  background-color: var(--online-color);
+}
+.cancel-card {
+  background-color: var(--other-orange-color);
+}
+.credit-card {
+  background-color: var(--other-brown-color);
+}
+.savings-account {
+  background-color: var(--other-purple-color);
+}
+.inssurance {
+  background-color: burlywood;
+}
+.withdrawal {
+  background-color: var(--online-color);
+}
+.loans {
+  background-color: var(--other-pink-color);
+}
+.investments {
+  background-color: var(--other-yellow-color);
+  color: var(--text-color-light);
+}
+.problem-solved {
+  background-color: var(--other-blue-color);
+}
+.problem-not-solved {
+  background-color: coral;
+}
+
+/*Media queries for AllAgentList*/
+/*****************************/
+/* BELOW 47*16 = 752px (Smaller desktops) */
+/*****************************/
+@media (max-height: 47em) {
+  .rec-main-container {
+    min-height: 10rem;
+  }
+
+  .rec-tag {
+    height: 4rem;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,72 @@
+/* CSS of AgentListMenu
+Authors:
+        A01777771 Stephen Strange*/
+/* Initials: aglm*/
+
+.aglm-menu-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin: 0 2.5rem 0 2rem;
+  gap: 2rem;
+}
+
+.aglm-button-container {
+  margin-top: 4.5rem;
+  margin-bottom: 1rem;
+}
+
+.aglm-filter-container {
+  margin: 3rem 0 3rem 0;
+}
+
+.aglm-search-container {
+  display: flex;
+  gap: 1.5rem;
+  margin: 4.5rem 1rem 1rem 0;
+}
+
+.aglm-search {
+  font-size: var(--option-text);
+  border-radius: 10px;
+  padding: 1rem 1rem 1rem 2rem;
+}
+
+.aglm-select {
+  font-size: var(--option-text);
+  font-weight: bold;
+  border-radius: 6px;
+  border-color: transparent;
+  padding: 1.2rem;
+  background-color: var(--sub-card-background);
+  color: var(--text-color);
+}
+
+.aglm-button-main {
+  cursor: pointer;
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--text-color);
+  text-decoration: underline;
+  font-size: var(--sub-title);
+  font-weight: bold;
+}
+
+.aglm-button-settings {
+  cursor: pointer;
+  border-color: transparent;
+  background-color: transparent;
+  color: gray;
+  font-size: var(--sub-title);
+  font-weight: bold;
+}
+
+/*Media queries for AgentMenu*/
+/*****************************/
+/* BELOW 47*16 = 752px (Smaller desktops) */
+/*****************************/
+@media (max-height: 47em) {
+  .aglm-search-container {
+    margin: 3.5rem 1rem 1rem 0;
+  }
+}

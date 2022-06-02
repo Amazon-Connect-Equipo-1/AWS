@@ -1,0 +1,23 @@
+/* CSS of AgenteMain
+Authors:
+        A01777771 Stephen Strange*/
+/* Initials: agM*/
+.agM-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-card-background);
+  border-radius: 10px;
+  height: 85vh;
+  margin: 1rem 2rem 2rem 100px;
+}
+
+.agM-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 0 2rem 0;
+  min-height: max-content;
+}

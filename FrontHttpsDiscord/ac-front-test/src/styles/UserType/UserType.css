@@ -1,0 +1,27 @@
+/* CSS of UserType
+Authors:
+        A01777771 Stephen Strange*/
+/* Initials: ut */
+.ut-main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+  background-color: #132535;
+  margin: 2rem;
+  border-radius: 10px;
+}
+
+.ut-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ut-logo {
+  height: 100px;
+  justify-self: center;
+}

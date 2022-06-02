@@ -1,0 +1,48 @@
+/* CSS of UserTypeForm
+Authors:
+        A01777771 Stephen Strange*/
+/*Initials: utf*/
+
+/* Main tags */
+.utf-button {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1.5rem;
+  background-color: #9facbd;
+  color: #ffff;
+  margin-top: 2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Classes */
+.utf-main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 40rem;
+  background-color: #415164;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 2.4rem 4.8rem rgb(0 0 0 / 15%);
+  min-height: 35rem;
+}
+
+.utf-container {
+  padding: 3rem;
+}
+
+.utf-form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.utf-form-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,54 @@
+/* CSS of Settings
+Authors:
+        A01777771 Stephen Strange*/
+.stngs-main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  margin: 1rem 2rem 2rem 100px;
+  border-radius: 10px;
+  color: var(--text-color);
+  background-color: var(--main-card-background);
+}
+
+.stngs-container {
+  width: 80%;
+  align-items: center;
+}
+
+.stngs-option {
+  font-size: var(--sub-title);
+  font-weight: bold;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  line-height: 200%;
+  padding: 2rem;
+}
+.stngs-select {
+  font-size: var(--option-text);
+  font-weight: bold;
+  border-radius: 6px;
+  border-color: transparent;
+  width: 30%;
+  padding: 1.2rem;
+  background-color: var(--sub-card-background);
+  color: var(--text-color);
+}
+.stngs-restore-container {
+  padding: 2rem;
+}
+.stngs-restore-btn {
+  align-self: flex-end;
+  font-size: var(--sub-option-text);
+  color: var(--text-color);
+  background-color: var(--main-card-background);
+  border: none;
+  cursor: pointer;
+}
+
+.stngs-restore-btn:hover {
+  text-decoration: underline var(--text-color);
+}

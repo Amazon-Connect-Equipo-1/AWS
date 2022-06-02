@@ -1,0 +1,193 @@
+/* CSS of ThridParty
+Authors:
+        A01777771 Stephen Strange*/
+/*Initials: tp*/
+
+.tp-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 65rem;
+  width: 35rem;
+  overflow-y: auto;
+  background-color: var(--sub-card-background);
+  color: var(--text-color);
+  border-radius: 10px;
+  box-shadow: 0 2.4rem 4.8rem rgb(0 0 0 / 15%);
+  padding: 0 1rem 0 1rem;
+}
+
+.tp-main-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.tp-main-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.tp-main-container::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.tp-main-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.tp-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 4rem;
+}
+
+.tp-title {
+  font-size: var(--sub-title);
+  /* font-size: 3rem; */
+  font-weight: bold;
+  padding: 1rem;
+  text-align: center;
+  grid-column: 1 / -1;
+  /* margin-top: 2rem; */
+}
+.tp-button {
+  /* display: flex; */
+  width: 9rem;
+  height: 9rem;
+  border-radius: 10px;
+  align-self: center;
+  justify-self: center;
+}
+.tp-image {
+  width: 9rem;
+  height: 9rem;
+  margin-left: -0.8rem;
+  margin-top: -0.3rem;
+  border-radius: 10px;
+}
+
+.tp-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  margin-left: 6rem;
+  margin-top: 2rem;
+  min-height: max-content;
+}
+.tp-submit {
+  display: flex;
+  justify-content: center;
+  align-items: right;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 0 2rem 0;
+  min-height: max-content;
+}
+.tp-name-label {
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  font-size: var(--option-text);
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+  min-height: max-content;
+}
+.tp-input-label {
+  display: flex;
+  justify-content: flex-start;
+  text-align: end;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-size: var(--option-text);
+  border-radius: 10px;
+  padding: 1rem 1rem 1rem 2rem;
+  min-height: max-content;
+  width: 100%;
+  border: none;
+}
+.tp-submit-button {
+  display: flex;
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+
+  font-size: var(--option-text);
+  font-weight: bold;
+  padding: 1rem;
+
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 95%;
+  align-items: center;
+  justify-content: center;
+}
+.tp-order {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+.tp-order-button {
+  font-size: var(--option-text);
+  color: var(--text-color);
+  background-color: var(--sub-card-background);
+  border: none;
+  cursor: pointer;
+  width: 6rem;
+  height: 6rem;
+  align-items: center;
+  justify-content: center;
+}
+.tp-order-button-container {
+  align-items: center;
+  justify-content: center;
+}
+.tp-confirmation {
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+  font-size: var(--option-text);
+  width: 32rem;
+  height: 60rem;
+  border-radius: 10px;
+}
+
+.tp-confirmation-text {
+  display: flex;
+  background-color: var(--main-card-background);
+  color: var(--text-color);
+  font-size: var(--option-text);
+  width: 30rem;
+  height: 43rem;
+  margin-top: 3rem;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.tp-confirmation-button {
+  width: 15rem;
+  height: 5rem;
+  border-radius: 10px;
+}
+.tp-confirmation-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*****************************/
+/* BELOW 50*16 = 800px (Smaller desktops) */
+/*****************************/
+@media (max-height: 50em) {
+  .tp-main-container {
+    height: 60rem;
+  }
+}

@@ -1,0 +1,114 @@
+/* CSS of Recordings
+Authors:
+        A01777771 Stephen Strange*/
+/* Initials: re */
+
+.re-main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-card-background);
+  margin: 1rem 2rem 2rem 100px;
+  border-radius: 10px;
+  min-height: 85vh;
+}
+
+.re-container {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  margin: 3rem 0 3rem 0;
+}
+
+.re-search-container {
+  display: flex;
+  grid-column: 1 / -1;
+  /* gap: 1.5rem; */
+  justify-self: end;
+}
+
+.re-input {
+  font-size: var(--option-text);
+  padding: 1rem 1rem 1rem 2rem;
+  border: none;
+}
+
+.re-select,
+.re-btn {
+  font-size: var(--option-text);
+  font-weight: bold;
+  border-radius: 6px;
+  border-color: transparent;
+  padding: 1.2rem;
+  border-radius: 10px 0 0 10px;
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+}
+
+.re-btn {
+  color: white;
+  background-color: #415164;
+  border-radius: 0 10px 10px 0;
+}
+
+/*Media queries for Recordings*/
+/*****************************/
+/* BELOW 90*16 = 1450px (Smaller desktops) */
+/*****************************/
+@media (max-width: 90em) {
+  .rec-main-container {
+    width: 35rem;
+  }
+  .rec-agent-name {
+    font-size: 2rem;
+  }
+  .rec-score {
+    font-size: 1.8rem;
+  }
+}
+
+/* BELOW 80*16 = 1280px (Smaller desktops) */
+@media (max-width: 80em) {
+  .re-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* BELOW 73*16 = 1180px (Smaller desktops) */
+@media (max-width: 73em) {
+  .rec-main-container {
+    width: 35rem;
+  }
+}
+
+/* BELOW 57*16 = 920px (Smaller desktops) */
+@media (max-width: 57em) {
+  .rec-main-container {
+    width: 35rem;
+  }
+  .re-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* BELOW 37*16 = 600px (Smaller desktops) */
+@media (max-width: 37em) {
+  .re-input {
+    font-size: 1.2rem;
+  }
+  .re-select {
+    font-size: 1.2rem;
+  }
+}
+
+/*Media queries for AllAgentList*/
+/*****************************/
+/* BELOW 47*16 = 752px (Smaller desktops) */
+/*****************************/
+@media (max-height: 47em) {
+  .re-container {
+    gap: 2rem;
+  }
+}

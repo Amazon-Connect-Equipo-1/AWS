@@ -1,0 +1,22 @@
+/* CSS of Chatbots
+Authors:
+        A01777771 Stephen Strange*/
+/*c:log*/
+.chatbot {
+  display: block;
+  width: 340px;
+  height: 515px;
+
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1px;
+  cursor: pointer;
+  background-color: #415164;
+  margin-top: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  text-align: center;
+  -webkit-border-radius: 10px;
+  border-radius: 22px;
+}

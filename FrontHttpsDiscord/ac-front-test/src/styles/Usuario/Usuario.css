@@ -1,0 +1,106 @@
+/* CSS of Usuario
+Authors:
+        A01777771 Stephen Strange*/
+/*U:log*/
+.usuario-contenedor {
+  display: block;
+
+  width: 380px;
+  height: 660px;
+  padding: 0.5rem;
+  -webkit-box-shadow: -1px 1px 0px 7px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 1px 0px 7px rgba(0, 0, 0, 0.2);
+
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #233445;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  border: 0.5px solid rgb(0, 0, 0);
+  text-align: center;
+}
+.usuario-chatEjemplo {
+  display: block;
+  cursor: pointer;
+  background-color: #415164;
+}
+.usuario-texto {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 25px;
+  margin-top: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.usuario-chatbot-contenedor {
+  width: 370px;
+  height: 615px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1px;
+  cursor: pointer;
+  background-color: #132535;
+
+  margin-top: 0.2rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+
+  text-align: center;
+  -webkit-border-radius: 10px;
+  border-radius: 22px;
+}
+.usuario-chatbot {
+  display: block;
+  width: 350px;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1px;
+  cursor: pointer;
+  background-color: #415164;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  text-align: center;
+  -webkit-border-radius: 10px;
+  border-radius: 22px;
+}
+.usuario-en-llamada {
+  display: block;
+  clear: left;
+  width: 350px;
+  height: 50px;
+  margin-bottom: 0.2rem;
+  margin-top: 2rem;
+  background-color: #9facbd;
+  -webkit-border-radius: 10px;
+  border-radius: 16px;
+}
+.usuario-no-llamada {
+  display: block;
+  clear: left;
+  width: 350px;
+  height: 50px;
+  margin-bottom: 0.2rem;
+  margin-top: 3rem;
+  background-color: #5f5f5f;
+  -webkit-border-radius: 10px;
+  border-radius: 16px;
+}
+.usuario-imagen {
+  display: inline-block;
+
+  clear: left;
+  margin-right: 30rem;
+  width: 6rem;
+  height: 3rem;
+}

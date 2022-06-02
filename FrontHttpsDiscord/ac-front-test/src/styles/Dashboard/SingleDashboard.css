@@ -1,0 +1,33 @@
+.sdsb-main-container-dashboard {
+  width: 85rem;
+  background-color: var(--sub-card-background);
+  color: var(--text-color);
+  border-radius: 10px;
+  box-shadow: 0 2.4rem 4.8rem rgb(0 0 0 / 15%);
+  height: 65rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sdsb-main-container-statistics {
+  width: 120rem;
+  background-color: var(--sub-card-background);
+  color: var(--text-color);
+  border-radius: 10px;
+  box-shadow: 0 2.4rem 4.8rem rgb(0 0 0 / 15%);
+  height: 60rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sdsb-quicksight-dashboard {
+  width: 80rem;
+  height: 60rem;
+}
+
+.sdsb-quicksight-statistics {
+  width: 90%;
+  height: 55rem;
+}
