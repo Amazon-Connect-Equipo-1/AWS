@@ -100,7 +100,7 @@ const LoginForm = (props) => {
     //   redirect: "follow",
     // };
 
-    fetch("https://35.88.250.238:8443/auth/signin", requestOptions)
+    fetch("https://backtest.bankonnect.link/auth/signin", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         window.localStorage.setItem("isLoggedIn", true);
@@ -129,7 +129,7 @@ const LoginForm = (props) => {
 
           //Save manager info in local storage
           fetch(
-            `https://35.88.250.238:8443/manager/managerProfile?email=${email}`,
+            `https://backtest.bankonnect.link/manager/managerProfile?email=${email}`,
             requestOptionsGET
           )
             .then((response) => response.text())
@@ -156,7 +156,7 @@ const LoginForm = (props) => {
 
           //Save manager info in local storage
           fetch(
-            `https://35.88.250.238:8443/agent/agentProfile?email=${email}`,
+            `https://backtest.bankonnect.link/agent/agentProfile?email=${email}`,
             requestOptionsGET
           )
             .then((response) => response.text())
