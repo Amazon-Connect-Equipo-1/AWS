@@ -2,8 +2,15 @@
     Función Lambda: lambda-transcribe-s3-trigger
     lamda_function.py
 
-    Author:
+    Main Author:
     - Erick Bustos.
+    
+    RDS Related Code Co-authors:
+    
+    - Diego Juárez.
+    - Luis Zamarripa.
+    - Jacqueline Zavala.
+    
 
     Creation date: 20/04/2022
     Last modification date: 01/06/2022
@@ -14,14 +21,18 @@
         2) Get already existent call information from Amazon Connect using the Amazon SDK for Python.
         3) Register the call in both our MySQL (RDS) database, and in DynamoDB
         4) Send the audio file to Amazon Transcribe to perform a call Analytics Job
+        5) Send the audio file to Amazon Transcribe to extract a vtt subtitles file
 
 '''
 
 import boto3
 import urllib.parse
 import pymysql
+import pytz
 import sys
 import os
+import json
+from datetime import date
 
 
 transcribe = boto3.client('transcribe', 'us-west-2')
@@ -64,6 +75,31 @@ def start_transcribe_job(s3bucket,s3object,job_name):
              ]
      )
 
+def create_subtitles_transcript(s3bucket,s3object,job_name):
+    """
+    Start an Amazon Trascribe Job using the audio recording to extract a .vtt subtitles file.
+        s3bucket (str): Name of the bucket where the object will be stored
+        s3object (str): S3 Key of the object
+        job_name (str): Name that the job will get (contact id)
+    """
+    
+    # Build URI of the recording that is going to be processed
+    job_uri = f's3://{s3bucket}/{s3object}'
+    
+    transcribe.start_transcription_job(
+        TranscriptionJobName = job_name,
+        Media = {
+            'MediaFileUri': job_uri
+        },
+        OutputBucketName = 'final-recordings',
+        OutputKey = 'subtitles/', 
+        LanguageCode = 'en-US', 
+        Subtitles = {
+            'Formats': [
+                'vtt'
+            ]
+    }
+    )
 
 def put_contact_dynamoDB(contact_id, agent_id, start, end,agent_name):
     """
@@ -89,8 +125,8 @@ def put_contact_dynamoDB(contact_id, agent_id, start, end,agent_name):
                 'agentId': agent_id,
                 'agentName': agent_name,
                 'duration': duration, 
-                'initialTimestamp': start.strftime("%Y-%M-%d %H:%M:%S"),
-                'disconnectTimestamp': end.strftime("%Y-%M-%d %H:%M:%S")
+                'initialTimestamp': start.astimezone(pytz.timezone('America/Mexico_City')).strftime("%Y-%m-%d %H:%M:%S"),
+                'disconnectTimestamp': end.astimezone(pytz.timezone('America/Mexico_City')).strftime("%Y-%m-%d %H:%M:%S")
                 
                 })
     
@@ -165,7 +201,7 @@ def put_contact_RDS(contact_id, agent_id, start, stop):
     #RDS settings
     rds_host = os.environ["RDS_HOST"]
     name = os.environ["DB_USERNAME"]
-    password = os.environ["PASSWORD"]
+    password = os.environ["DB_PASSWORD"]
     db_name = os.environ["DB_NAME"]
     
     # Connection to the data base
@@ -176,14 +212,14 @@ def put_contact_RDS(contact_id, agent_id, start, stop):
         
     duration = str(stop.replace(microsecond = 0) - start.replace(microsecond = 0))
     client_id,problem_solved = get_contact_attributes(contact_id)
-    date = start.strftime("%Y-%M-%d")
-    
+    date = start.date()
+  
     #Creation of cursor, SQL statement    
     cur = conn.cursor()
     sql = """insert into Calls (call_id, agent_id, client_id, time_start, time_finish, duration, problem_solved, date)
              values (%s, %s, %s, %s, %s, %s, %s, %s) 
         """
-    cur.execute(sql,(contact_id, agent_id, client_id, start.strftime("%Y-%M-%d %H:%M:%S"), stop.strftime("%Y-%M-%d %H:%M:%S"), duration, problem_solved, date))
+    cur.execute(sql,(contact_id, agent_id, client_id, start.astimezone(pytz.timezone('America/Mexico_City')), stop.astimezone(pytz.timezone('America/Mexico_City')), duration, problem_solved, date))
     conn.commit()
 
 
@@ -204,6 +240,7 @@ def lambda_handler(event, context):
     except:
         contact_id = "JobwithoutMetadata"
     
+
     # Copy audio files to bucket 'screen-raw-recordings'
     copy_audio(s3bucket, s3object, contact_id)
     
@@ -225,10 +262,14 @@ def lambda_handler(event, context):
     # Start transcribe job
     start_transcribe_job(s3bucket,s3object,contact_id)
     
-print(get_contact_attributes("65fe4e77-0ee0-401a-8384-6047c1338859"))
+    # Generate subtitles
+    create_subtitles_transcript(s3bucket,s3object,contact_id)
 
-if __name__ == "__mainn__":
-    #print(get_contact_information("c8c25f9f-75d7-40d4-bef5-f12366bd4884"))
+
+    
+# Test case
+if __name__ == "__main__":
+ 
     lambda_handler({
   "Records": [
     {
