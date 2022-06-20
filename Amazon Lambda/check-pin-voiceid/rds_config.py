@@ -1,5 +1,5 @@
 '''
-    Lambda Function: check-voice-id
+    Función Lambda: check-voice-id
     rds_config.py
 
     Authors:

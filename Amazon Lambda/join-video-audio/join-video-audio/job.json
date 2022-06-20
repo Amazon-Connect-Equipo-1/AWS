@@ -4,7 +4,36 @@
   },
   "OutputGroups": [
     {
-      "CustomName": "test",
+      "CustomName": "thumbnail",
+      "Name": "File Group",
+      "Outputs": [
+        {
+          "ContainerSettings": {
+            "Container": "RAW"
+          },
+          "VideoDescription": {
+            "ScalingBehavior": "DEFAULT",
+            "Sharpness": 50,
+            "CodecSettings": {
+              "Codec": "FRAME_CAPTURE",
+              "FrameCaptureSettings": {
+                "FramerateNumerator": 30,
+                "FramerateDenominator": 30,
+                "MaxCaptures": 2
+              }
+            }
+          }
+        }
+      ],
+      "OutputGroupSettings": {
+        "Type": "FILE_GROUP_SETTINGS",
+        "FileGroupSettings": {
+          "Destination": "s3://final-recordings/thumbnails/"
+        }
+      }
+    },
+    {
+      "CustomName": "video",
       "Name": "File Group",
       "Outputs": [
         {
@@ -16,7 +45,7 @@
             "CodecSettings": {
               "Codec": "H_264",
               "H264Settings": {
-                "MaxBitrate": 5000000,
+                "MaxBitrate": 2500000,
                 "RateControlMode": "QVBR",
                 "SceneChangeDetect": "TRANSITION_DETECTION"
               }
@@ -39,7 +68,7 @@
       "OutputGroupSettings": {
         "Type": "FILE_GROUP_SETTINGS",
         "FileGroupSettings": {
-          "Destination": "s3://final-recordings/"
+          "Destination": "s3://final-recordings/videos/"
         }
       }
     }

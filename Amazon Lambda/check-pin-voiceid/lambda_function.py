@@ -42,13 +42,11 @@ def lambda_handler(event, context):
     # Retrieved data from Amazon Connect
     client_number = event["Details"]["ContactData"]["CustomerEndpoint"]["Address"]
     client_pin = event["Details"]["Parameters"]["clientPin"]
-    print("clientPin ", client_pin)
-    
+
     # Hashing the pin
     hash_pin = hashlib.sha256(client_pin.encode())
     hex_dig = hash_pin.hexdigest()
-    print("SHA256: ", hex_dig)
-    
+
     # SQL with cursos
     with conn.cursor() as cur:
         client_bool = "You were not authenticated"

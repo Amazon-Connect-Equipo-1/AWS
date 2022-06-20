@@ -39,7 +39,7 @@ logger.info("SUCCESS: Connection to RDS MySQL instance succeeded")
 
 def lambda_handler(event, context):
     #Default value of the client id
-    id_client = '0'
+    id_client = '00000000-0000-0000-0000-000000000000'
     
     # Get the value from event agrument
     client_number = event["Details"]["ContactData"]["CustomerEndpoint"]["Address"]

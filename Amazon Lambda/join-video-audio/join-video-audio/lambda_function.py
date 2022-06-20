@@ -9,7 +9,7 @@
     - Luis Zamarripa.
     
     Creation date: 25/05/2022
-    Last modification date: 31/05/2022
+    Last modification date: 01/06/2022
 '''
 
 # Lambda imports
@@ -77,17 +77,17 @@ def create_video_dynamoDB(contact_id, key_s3_object_video):
     table = dynamodb.Table('Recordings')
     
     # Create objects URLs
-    processed_recording_url = f'https://final-recordings.s3.us-west-2.amazonaws.com/{contact_id}.mp4'
-    original_recording_url = f'https://screen-raw-recordings.s3.us-west-2.amazonaws.com/{key_s3_object_video}'
+    processed_recording_url = f'https://final-recordings.s3.us-west-2.amazonaws.com/videos/{contact_id}.mp4'
+    thumbnail_url = f'https://final-recordings.s3.us-west-2.amazonaws.com/thumbnails/{contact_id}.0000001.jpg'
     
     response = table.update_item(
         Key={
             'RecordingId': contact_id,
         },
-        UpdateExpression="set videoRecording=:vr, processedRecording=:pr",
+        UpdateExpression="set processedRecording=:pr, thumbnail=:t",
         ExpressionAttributeValues={
-            ':vr': original_recording_url,
             ':pr': processed_recording_url,
+            ':t': thumbnail_url
         },
         ReturnValues="UPDATED_NEW"
     )
